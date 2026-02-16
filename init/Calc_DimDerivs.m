@@ -8,7 +8,7 @@
  Z_alpha     = -(qbar * Sref * (CLalpha + CD1)) / m
 
  %Pitching
- M_u         =  (qbar * Sref * cbar * CMu) / (Iyy * u1) 
+ M_u         =  (qbar * Sref * cbar * CMu) / (Iyy * U1) 
  M_alpha     =  (qbar * Sref * cbar * CMalpha) / Iyy
  M_q         =  (qbar * Sref * (cbar^2) * CMq) / (2 * Iyy * U1)
  M_alpha_dot =  (qbar * Sref * (cbar^2) * CMalpha) / (2 * Iyy * (U1))
