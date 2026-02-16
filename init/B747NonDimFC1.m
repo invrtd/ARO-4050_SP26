@@ -3,7 +3,7 @@
 %% FLight Condition Data
 alt = 0;        % Altitude (ft)
 mach = 0.198;   % Mach Number
-U1 = 221;      % True Air Speed (ft/s)
+tas = 221;      % True Air Speed (ft/s)
 qbar = 58;      % Dynamic Pressure (lbs/ft^2)
 cbar = 0.25;    % CG Location
 alpha = 8.5;    % Angle of Attack (deg)
