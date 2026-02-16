@@ -17,7 +17,7 @@ Calc_DimDerivs
 % Calc_XferFunc
 % % Now do final Sim Init and Trim
 % Sim_Trim
-% %  Simulation is now fully initiated and ready to run.
+%  Simulation is now fully initiated and ready to run.
 % Tdoublet=2;
 % %Kp_pitch = 0.9;
 % %Kd_pitch = 2.5;

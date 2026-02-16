@@ -1,6 +1,6 @@
 %Longtitudinal Derivative
  %Axial
- X_u         = -(qbar * Sref * (2*CD1 + CDu)) / (m * U1)
+ X_u         = -(qbar * Sref * (2*CD1 + CD_u)) / (m * U1)
  X_alpha     =  (qbar * Sref * (CL1 - CDalpha)) / m
 
  %Normal
