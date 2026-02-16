@@ -3,7 +3,7 @@
 
 % Initialize all global aircraft variables here:
 cbar = 28.7;       % feet
-Sref = 4702;       % feet^2
+Sref = 5500;       % feet^2
 D2R = pi/180;      % Rad/Deg
 R2D = 180/pi;      % Deg/Rad
 Span = 212.5;      % feet
