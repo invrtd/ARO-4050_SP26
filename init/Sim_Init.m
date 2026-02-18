@@ -1,24 +1,27 @@
 
 displayON = true;
+
+Sim6DOF_Init
+
 % Select which flight condition script to run
-% B747NonDimFC1
+  B747NonDimFC1
 % B747NonDimFC2
- B747NonDimFC3
+% B747NonDimFC3
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
 % Now calculate all the dimensional derivatives for that FC
 Calc_DimDerivs
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
-Estimate_Modes
+%Estimate_Modes
 % Calculate Long-Vert & Lat-Dir Stability Matrices
-Calc_StabMatrix
+%Calc_StabMatrix
 %  Compute Long-Vert & Lat-Dir Transfer Functions
-Calc_XferFunc
+%Calc_XferFunc
 % Now do final Sim Init and Trim
-Sim_Trim
+%Sim_Trim
 %  Simulation is now fully initiated and ready to run.
-Tdoublet=2;
+Tdoublet=2;s
 %Kp_pitch = 0.9;
 %Kd_pitch = 2.5;
 %Kp_roll = 2.0;
