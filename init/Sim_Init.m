@@ -4,9 +4,9 @@ displayON = true;
 Sim6DOF_Init
 
 % Select which flight condition script to run
-  B747NonDimFC1
+% B747NonDimFC1
 % B747NonDimFC2
-% B747NonDimFC3
+  B747NonDimFC3
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
@@ -21,7 +21,7 @@ Calc_DimDerivs
 % Now do final Sim Init and Trim
 %Sim_Trim
 %  Simulation is now fully initiated and ready to run.
-Tdoublet=2;s
+Tdoublet=2;
 %Kp_pitch = 0.9;
 %Kd_pitch = 2.5;
 %Kp_roll = 2.0;
