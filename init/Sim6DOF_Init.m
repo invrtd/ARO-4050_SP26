@@ -28,6 +28,7 @@ aLR = -0.00349;     % R/Ft
 
 % Add a call to another m file to initialize all LAT-DIR data here:
 
+Thrust_engine_pos_variables % 
 
 % I used the Flight Condition #2 (High Altitude Cruise)
 Clbeta = -0.095; % 1/Rad
