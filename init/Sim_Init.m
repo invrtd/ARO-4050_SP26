@@ -1,17 +1,18 @@
 
 displayON = true;
+clear
 
 Sim6DOF_Init
 
 % Select which flight condition script to run
 % B747NonDimFC1
-% B747NonDimFC2
+% B747NonDimFC25
   B747NonDimFC3
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
 % Now calculate all the dimensional derivatives for that FC
-Calc_DimDerivs
+%Calc_DimDerivs
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
 %Estimate_Modes
 % Calculate Long-Vert & Lat-Dir Stability Matrices
