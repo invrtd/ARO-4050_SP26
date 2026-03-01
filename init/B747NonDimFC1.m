@@ -5,7 +5,7 @@ alt = 0;        % Altitude (ft)
 mach = 0.198;   % Mach Number
 tas = 221;      % True Air Speed (ft/s)
 Qbar = 58;      % Dynamic Pressure (lbs/ft^2)
-Cbar = 0.25;    % CG Location
+Cbar = 27.3;    % Mean geometric chord (feet)
 alpha = 8.5;    % Angle of Attack (deg)
 
 %% Mass Data
