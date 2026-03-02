@@ -3,13 +3,14 @@
 %% FLight Condition Data
 alt = 20000;    % Altitude (ft)
 mach = 0.650;   % Mach Number
-tas = 673;      % True Air Speed (ft/s)
+U1 = 673;      % True Air Speed (ft/s)
 Qbar = 287.2;   % Dynamic Pressure (lbs/ft^2)
 Cbar = 27.3;    % Mean geometric chord (feet)
 alpha = 2.5;    % Angle of Attack (deg)
 
 %% Mass Data
 Weight = 636636;         % Weight (lbs)
+Mass = Weight/g0;  % Slugs
 ixxb = 18200000;    % Mass Moment of Inertia XX (slug*ft^2)
 iyyb = 33100000;    % Mass Moment of Inertia YY (slug*ft^2)
 izzb = 49700000;    % Mass Moment of Inertia ZZ (slug*ft^2)
