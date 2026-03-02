@@ -11,10 +11,10 @@ alpha = 8.5;    % Angle of Attack (deg)
 %% Mass Data
 Weight = 564000;         % Weight (lbs)
 Mass = Weight/g0;  % Slugs
-ixxb = 13700000;    % Mass Moment of Inertia XX (slug*ft^2)
-iyyb = 30500000;    % Mass Moment of Inertia YY (slug*ft^2)
-izzb = 43100000;    % Mass Moment of Inertia ZZ (slug*ft^2)
-ixzb = 830000;      % Mass Moment of Inertia XZ (slug*ft^2)
+Ixx = 13700000;    % Mass Moment of Inertia XX (slug*ft^2)
+Iyy = 30500000;    % Mass Moment of Inertia YY (slug*ft^2)
+Izz = 43100000;    % Mass Moment of Inertia ZZ (slug*ft^2)
+Ixz = 830000;      % Mass Moment of Inertia XZ (slug*ft^2)
 
 %% Steady State Coefficients
 CL1 = 1.76;     % Initial Coefficient of Lift
