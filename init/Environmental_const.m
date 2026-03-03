@@ -8,3 +8,11 @@ Rho0 = 0.002377;   % Slug/Ft^3
 aLR = -0.00349;     % R/Ft
 
 g0 = 32.174;       % Ft/Sec^2
+r = 6.356766E6; %radius of E in ft
+
+alpha_temp  =  0.00357; %temperature lapse rate R/ft
+rho1 = 0.002377; % slug/ft^3 density SL standard day
+gamma = 1.4;
+S = 198.7; %sutherland constant
+r_planet_radius = 6.356766*10^6; 
+h1_Assuming_Troposphere = 0; %Base atmosphere 
