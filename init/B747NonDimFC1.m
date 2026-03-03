@@ -1,5 +1,9 @@
 %% Approach Flight Conditions (FC1)
 
+%% Airframe Properties 
+Sref = 5500;       % feet^2
+Span = 196;      % feet
+
 %% FLight Condition Data
 alt = 0;        % Altitude (ft)
 mach = 0.198;   % Mach Number
