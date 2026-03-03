@@ -8,7 +8,6 @@
 
 T_Max0 = 56700; % pounds force
 
-
 % Add a call to another m file to initialize all LONG-VERT data here:
 
 % Add a call to another m file to initialize all LAT-DIR data here:
