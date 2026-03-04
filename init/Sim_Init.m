@@ -2,12 +2,13 @@
 displayON = true;
 clear
 
-Sim6DOF_Init
+
 Environmental_const
 % Select which flight condition script to run
 % B747NonDimFC1
 % B747NonDimFC25
   B747NonDimFC3
+  Sim6DOF_Init
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
