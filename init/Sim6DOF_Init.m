@@ -34,13 +34,13 @@ Vert_thrust_vars
 % The following stab trim setting is only for initial testing.  Use this
 
 % variable in your Simulink models, or replace as you see fit.
-StabTrimPos = 5.5;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
-EngineThrustCMD = 85.0;   % N1 Fan Speed  (100% Max, 0% Min)
+StabTrimPos = -1.53;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
+EngineThrustCMD = .56;   % N1 Fan Speed  (100% Max, 0% Min)
 
 
 u01 = 871.0 ; % Ft/Sec
 v0 = 0.0;    % Ft/Sec
-w0 = U1*tan(deg2rad(alpha));    % Ft/Sec
+w0 = U1*tand(alpha);    % Ft/Sec
 p0 = 0;      % Rad/Sec
 q0 = 0;      % Rad/Sec
 r0 = 0;      % Rad/Sec
