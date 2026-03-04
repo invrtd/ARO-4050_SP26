@@ -13,8 +13,8 @@ T_Max0 = 56700; % pounds force
 % Add a call to another m file to initialize all LAT-DIR data here:
 
 % variable in your Simulink models, or replace as you see fit.
-StabTrimPos =-10;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
-EngineThrustCMD = 0;   % N1 Fan Speed  (100% Max, 0% Min)
+StabTrimPos = -1.5;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
+EngineThrustCMD = 0.56;   % N1 Fan Speed  (100% Max, 0% Min)
 NumberOfEngines = 4;
 
 u01 = 871.0 ; % Ft/Sec
