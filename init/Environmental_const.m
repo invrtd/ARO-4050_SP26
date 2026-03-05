@@ -32,5 +32,5 @@ T_0_2 = 389.99; % R
 rho_0_2 = 0.000706; % slug/ft^3
 P_0_2 = 472.68; %lb/ft^2
 
-simOut = sim('ARO40506DOF_2020a_2025','StopTime','0.01');
-RhoAltitude = simOut.Density;  % Slug/Ft^3
+%simOut = sim('ARO40506DOF_2020a_2025','StopTime','0.01');
+%RhoAltitude = simOut.Density;  % Slug/Ft^3

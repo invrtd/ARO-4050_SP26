@@ -3,12 +3,13 @@ displayON = true;
 clear
 
 
-Environmental_const
+ Environmental_const
 % Select which flight condition script to run
 % B747NonDimFC1
 % B747NonDimFC25
   B747NonDimFC3
   Sim6DOF_Init
+ 
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
@@ -35,9 +36,9 @@ Kd_roll = 0.0;
 %%
 x_T_in = 27.1883; % [ft]
 y_T_in = 38.3914; % [ft]
-z_T_in = 11.5761; % [ft]
+z_T_in = 1.543; % [ft]
 x_T_out = 1.1857; % [ft]
 y_T_out = 68.5432; % [ft]
-z_T_out = 8.4480; % [ft]
+z_T_out = -1.5428; % [ft]
 psi_T = 0; % [rad] Assume zero for now
 phi_T = 0; % [rad] Assume zero for now 
