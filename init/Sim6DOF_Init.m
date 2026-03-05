@@ -14,7 +14,7 @@ T_Max0 = 56700; % pounds force
 
 % variable in your Simulink models, or replace as you see fit.
 StabTrimPos = -1.5;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
-EngineThrustCMD = 0.56;   % N1 Fan Speed  (100% Max, 0% Min)
+EngineThrustCMD = 0.65;   % N1 Fan Speed  (100% Max, 0% Min)
 NumberOfEngines = 4;
 
 u01 = 871.0 ; % Ft/Sec
