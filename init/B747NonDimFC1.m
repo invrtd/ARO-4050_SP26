@@ -37,7 +37,8 @@ CL_u = -0.22;    % Partial CL with respect to velocity u
 CL_alpha = 5.67;  % Partial CL with respect to angle of attack
 CL_alphdot = 6.7;% Partial CL with respect to time rate of change of AoA
 CL_q = 5.65;     % Partial CL with respect to pitch rate
-CM_0 = 0;        % Pitching Moment Coefficient at 0 AoA
+CM
+0 = 0;        % Pitching Moment Coefficient at 0 AoA
 CM_u = 0.071;    % Partial Cm with respect to velocity u
 CM_alpha = -1.45; % Partial Cm with respect to angle of attack
 CM_alphdot = -3.3; % Partial Cm with respect to time rate of change of AoA

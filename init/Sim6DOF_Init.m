@@ -17,7 +17,7 @@ StabTrimPos = -1.516;        % Horizontal Stabilizer Setting (+ = Nose Up Trim)
 EngineThrustCMD = 0.559;   % N1 Fan Speed  (100% Max, 0% Min)
 NumberOfEngines = 4;
 
-u01 = 871.0 ; % Ft/Sec
+u0 = 871.0 ; % Ft/Sec
 v0 = 0.0;    % Ft/Sec
 w0 = U1*tan(deg2rad(alpha));    % Ft/Sec
 p0 = 0;      % Rad/Sec
@@ -26,3 +26,5 @@ r0 = 0;      % Rad/Sec
 Phi0=0;
 Psi0=0;
 Theta0=0;
+
+CY_beta_dot =0;
