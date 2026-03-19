@@ -1,10 +1,10 @@
-%% Approach Flight Conditions (FC1)
+%% High Speed Cruise Flight Conditions (FC3)
 
 %% Airframe Properties 
 Sref = 5500;       % feet^2
 Span = 196;      % feet
 
-%% FLight Condition Data
+%% Flight Condition Data
 alt = 40000;    % Altitude (ft)
 mach = 0.900;   % Mach Number
 U1 = 871;      % True Air Speed (ft/s)
@@ -60,6 +60,7 @@ CL_beta = -0.095;  % Partial Cl with respect to sideslip angle
 CL_p = -0.320;     % Partial Cl with respect to roll rate
 CL_r = 0.200;      % Partial Cl with respect to yaw rate
 CY_beta = -0.90;   % Partial CY with respect to sideslip angle
+CY_beta_dot =0;
 CY_p = 0;          % Partial Cl with respect to roll rate
 CY_r = 0;          % Partial Cl with respect to yaw rate
 CN_beta = 0.210;   % Partial Cn with respect to sideslip angle
