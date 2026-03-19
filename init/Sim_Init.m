@@ -46,7 +46,8 @@ Calc_DimDerivs
 % Simulation is now fully initiated and ready to run.
 
 % --- Simulation Inputs ---
-Tdoublet = 2; % Time for doublet input
+Tdoublet = 2;        % Time for doublet input
+ActTC    = 0.3;      % Actuator Time Constant
 
 % --- Control Gains ---
 %Kp_pitch = 0.9;
