@@ -4,7 +4,7 @@
 Sref = 5500;       % feet^2
 Span = 196;      % feet
 
-%% FLight Condition Data
+%% Flight Condition Data
 alt = 0;        % Altitude (ft)
 mach = 0.198;   % Mach Number
 U1 = 221;      % True Air Speed (ft/s)
@@ -37,7 +37,7 @@ CL_u = -0.22;    % Partial CL with respect to velocity u
 CL_alpha = 5.67;  % Partial CL with respect to angle of attack
 CL_alphdot = 6.7;% Partial CL with respect to time rate of change of AoA
 CL_q = 5.65;     % Partial CL with respect to pitch rate
-CM_0 = 0;        % Pitching Moment Coefficient at 0 AoA
+CM0 = 0;         % Pitching Moment Coefficient at 0 AoA
 CM_u = 0.071;    % Partial Cm with respect to velocity u
 CM_alpha = -1.45; % Partial Cm with respect to angle of attack
 CM_alphdot = -3.3; % Partial Cm with respect to time rate of change of AoA
@@ -60,6 +60,7 @@ CL_beta = -0.281;    % Partial Cl with respect to sideslip angle
 CL_p = -0.502;       % Partial Cl with respect to roll rate
 CL_r = 0.195;        % Partial Cl with respect to yaw rate
 CY_beta = -1.08;     % Partial CY with respect to sideslip angle
+CY_beta_dot = 0;
 CY_p = 0;            % Partial Cl with respect to roll rate
 CY_r = 0;            % Partial Cl with respect to yaw rate
 CN_beta = 0.184;     % Partial Cn with respect to sideslip angle

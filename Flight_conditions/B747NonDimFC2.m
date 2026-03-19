@@ -1,10 +1,10 @@
-%% Approach Flight Conditions (FC1)
+%% Cruise Flight Conditions (FC2)
 
 %% Airframe Properties 
 Sref = 5500;       % feet^2
 Span = 196;      % feet
 
-%% FLight Condition Data
+%% Flight Condition Data
 alt = 20000;    % Altitude (ft)
 mach = 0.650;   % Mach Number
 U1 = 673;      % True Air Speed (ft/s)
@@ -37,7 +37,7 @@ CL_u = 0.13;       % Partial CL with respect to velocity u
 CL_alpha = 4.4;    % Partial CL with respect to angle of attack
 CL_alphdot = 7.0;  % Partial CL with respect to time rate of change of AoA
 CL_q = 6.6;        % Partial CL with respect to pitch rate
-CM_0 = 0;          % Pitching Moment Coefficient at 0 AoA
+CM0 = 0;          % Pitching Moment Coefficient at 0 AoA
 CM_u = 0.013;      % Partial Cm with respect to velocity u
 CM_alpha = -1.00;  % Partial Cm with respect to angle of attack
 CM_alphdot = -4.0; % Partial Cm with respect to time rate of change of AoA
@@ -60,6 +60,7 @@ CL_beta = -0.160;  % Partial Cl with respect to sideslip angle
 CL_p = -0.340;     % Partial Cl with respect to roll rate
 CL_r = 0.130;      % Partial Cl with respect to yaw rate
 CY_beta = -0.90;   % Partial CY with respect to sideslip angle
+CY_beta_dot =0;
 CY_p = 0;          % Partial Cl with respect to roll rate
 CY_r = 0;          % Partial Cl with respect to yaw rate
 CN_beta = 0.160;   % Partial Cn with respect to sideslip angle
