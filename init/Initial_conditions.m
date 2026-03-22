@@ -16,3 +16,8 @@ r0 = 0.0;                   % Yaw rate (Rad/Sec)
 Phi0   = 0.0;               % Roll angle (Rad)
 Psi0   = 0.0;               % Yaw/Heading angle (Rad)
 Theta0 = deg2rad(alpha);    % Pitch angle (Rad) - Set to match angle of attack for trim
+
+% --- Initial Inertial Position ---
+x0     = 0;
+y0     = 0;
+z0     = alt;                               % Feet

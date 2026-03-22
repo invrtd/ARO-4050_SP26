@@ -41,7 +41,7 @@ Calc_DimDerivs
 % Calc_XferFunc
 
 % Now do final Sim Init and Trim
-%Sim_Trim
+Sim_Trim
 
 % Simulation is now fully initiated and ready to run.
 
