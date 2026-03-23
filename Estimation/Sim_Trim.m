@@ -1,6 +1,8 @@
 %% Trim Script
 
 modelname = 'ARO40506DOF_2020a_2025';
+
+load_system(modelname);
 didbreak = false;
 history = zeros(max_iters, 6);   % [iter, Ax, Az, alpha, StabTrimPos, EngineThrustCMD]
 
