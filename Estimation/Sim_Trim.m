@@ -1,66 +1,78 @@
-%% B747 Full Longitudinal Trim Script (FC3)
-% --- Initial Trim Settings ---
-StabTrimPos = -1.516;      % Horizontal Stabilizer Setting (+ = Nose Up Trim, deg or rad depending on model)
-EngineThrustCMD = 0.793;   % N1 Fan Speed (1.0 = 100% Max, 0.0 = 0% Min
-%look in Sim_Init
+%% Trim Script
+
 modelname = 'ARO40506DOF_2020a_2025';
-tolerance =1e-6;
-max_iters=5;
+didbreak = false;
+history = zeros(max_iters, 6);   % [iter, Ax, Az, alpha, StabTrimPos, EngineThrustCMD]
 
-% 
+set_param(modelname, 'FastRestart', 'on');
+
 for i = 1:max_iters
-    % 1. Update Kinematic Initial Conditions for the next Sim run
-    % Theta must equal Alpha for level flight (gamma = 0)
-    u0 = U1;
-    w0 = U1 * tand(alpha);
-    Theta0 = deg2rad(alpha);
-    q0 = 0; % Ensure rotation starts at zero
 
-    % 2. Run a short "Snapshot" Simulation
-    simOut = sim(modelname, 'StopTime', '0.001','FastRestart', "on");%makes runs faster now 
+    Initial_conditions
 
-    % 3. Robust Data Extraction via getElement
-    M_val  = simOut.logsout.getElement('Net Body Moments').Values.M.Data(1);%since it is a bus you need to say which val to read
+    % Run a short snapshot simulation
+    simOut = sim(modelname, 'StopTime', '0');
+
+    % Extract initial values
+    M_val  = simOut.logsout.getElement('Net Body Moments').Values.M.Data(1);
     Ax_val = simOut.logsout.getElement('u dot (Ft/Sec^2)').Values.Data(1);
     Az_val = simOut.logsout.getElement('w dot (Ft/Sec^2)').Values.Data(1);
 
-    % Log history for progressive tracking
-   % history = [history; i, Ax_val, Az_val, alpha, StabTrimPos, EngineThrustCMD];
+    % Store history
+    history(i,:) = [i, Ax_val, Az_val, alpha, StabTrimPos, EngineThrustCMD];
 
-    % 4. Convergence Check
+    % Check convergence
     if max(abs([Ax_val, Az_val])) < tolerance
-        fprintf('Trim Success at Iteration %d\n', i);
+        didbreak = true;
+        set_param(modelname, 'FastRestart', 'off');
         break;
     end
 
-    % 5. Simultaneous Updates (Gradient Descent logic)
-    % Update Alpha (Balances Lift vs Weight)
-    % If Az is negative (sinking), we need more Alpha.
-    alpha = alpha + (Az_val * 0.2); 
+    % Update alpha
+    alpha = alpha + (Az_val * 0.2);
 
-    % Update Thrust (Balances Thrust vs Drag)
-    % If Ax is negative (slowing down), we need more Thrust.
+    % Update thrust
     EngineThrustCMD = EngineThrustCMD - (Ax_val * 0.1);
 
-    % Update Stabilizer (Balances Pitching Moment)
-    % M_ih_dim approx = Qbar * Sref * Cbar * CM_ih
-%     M_ih_dim = Qbar * Sref * Cbar * CM_ih/8;
-%     StabTrimPos = StabTrimPos - (M_val / M_ih_dim);
- fprintf('Final Trim State: Alpha: %.5f deg Stab: %.5f deg Thrust: %.2f%%\n', ...
-         alpha, StabTrimPos, EngineThrustCMD*100); 
+    % Update stabilizer
+    M_ih_dim = Qbar * Sref * Cbar * CM_ih / 8;
+    StabTrimPos = StabTrimPos - (M_val / M_ih_dim);
+
+    fprintf('Alpha: %.5f deg | Stab: %.5f deg | Thrust: %.5f | Iteration %d\n', ...
+        alpha, StabTrimPos, EngineThrustCMD, i);
 end
-% 
-% %% 6. Progressive Trim Results Visualization
-% % figure('Name', 'Trim Convergence History', 'Color', 'w');
-% % subplot(3,1,1); plot(history(:,1), history(:,2), '-o'); title('Residual Moment (M)'); grid on;
-% % subplot(3,1,2); plot(history(:,1), history(:,3), '-o'); title('Longitudinal Accel (Ax)'); grid on;
-% % subplot(3,1,3); plot(history(:,1), history(:,4), '-o'); title('Vertical Accel (Az)'); grid on;
-% 
- 
 
- sim(modelname,'StopTime', '0.001', 'FastRestart', "off");%set it back to normal mode
+% Keep only the rows that were used
+history = history(1:i,:);
 
 
- fprintf('Final Trim State:\n Alpha: %.5f deg\n Stab: %.5f deg\n Thrust: %.2f%%\n', ...
-         alpha, StabTrimPos, EngineThrustCMD*100);
- 
+%% Final Output
+
+if didbreak && i == 1
+    fprintf('==================================================\n');
+    fprintf('                    TRIM STATE                    \n');
+    fprintf('==================================================\n');
+    fprintf('Alpha           : %10.5f deg\n', alpha);
+    fprintf('Stabilizer Trim : %10.5f deg\n', StabTrimPos);
+    fprintf('Thrust Command  : %10.2f %%\n', EngineThrustCMD * 100);
+    fprintf('==================================================\n');
+
+else
+    if didbreak
+        fprintf('==================================================\n');
+        fprintf('Trim Converged (Iteration %d)\n', i);
+        fprintf('Final Trim Values:\n');
+        fprintf('--------------------------------------------------\n');
+    else
+        fprintf('==================================================\n');
+        fprintf('Trim Did NOT Converge (Iteration %d)\n', i);
+        fprintf('Best Available Values:\n');
+        fprintf('--------------------------------------------------\n');
+    end
+
+    fprintf('alpha            = %.6f;\n', alpha);
+    fprintf('StabTrimPos      = %.6f;\n', StabTrimPos);
+    fprintf('EngineThrustCMD  = %.6f;\n', EngineThrustCMD);
+
+    fprintf('==================================================\n');
+end
