@@ -12,14 +12,20 @@ Environmental_const
 
 % Select which flight condition script to run
 % B747NonDimFC1  % Approach Flight Condition
-% B747NonDimFC25 % Mid-Cruise Flight Condition
+% B747NonDimFC2 % Mid-Cruise Flight Condition
 B747NonDimFC3    % High Speed Cruise Flight Condition
 
 
 
 % --- Initial Trim Settings ---
-StabTrimPos = -1.516;      % Horizontal Stabilizer Setting (+ = Nose Up Trim, deg or rad depending on model)
-EngineThrustCMD = 0.793;   % N1 Fan Speed (1.0 = 100% Max, 0.0 = 0% Min
+tolerance =1e-5;
+max_iters=60;
+% StabTrimPos = -1.516;      % Horizontal Stabilizer Setting (+ = Nose Up Trim, deg or rad depending on model)
+% EngineThrustCMD = 0.793;   % N1 Fan Speed (1.0 = 100% Max, 0.0 = 0% Min
+
+alpha            = 2.482647;
+StabTrimPos      = -1.549884;
+EngineThrustCMD  = 0.814704;
 
 % Set Initial Conditions
 Initial_conditions
@@ -29,7 +35,7 @@ Initial_conditions
 % B3_NonDimFC3
 
 % Now calculate all the dimensional derivatives for that FC
-Calc_DimDerivs
+% Calc_DimDerivs
 
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
 %Estimate_Modes
@@ -40,14 +46,16 @@ Calc_DimDerivs
 % Compute Long-Vert & Lat-Dir Transfer Functions
 % Calc_XferFunc
 
-% Now do final Sim Init and Trim
-%Sim_Trim
-
-% Simulation is now fully initiated and ready to run.
 
 % --- Simulation Inputs ---
-Tdoublet = 2;        % Time for doublet input
 ActTC    = 0.3;      % Actuator Time Constant
+
+% Now do final Sim Init and Trim
+Sim_Trim
+
+
+% Simulation is now fully initiated and ready to run.
+Tdoublet = 2;        % Time for doublet input
 
 % --- Control Gains ---
 %Kp_pitch = 0.9;
