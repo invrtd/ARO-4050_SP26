@@ -34,7 +34,7 @@ Cu = X_delEle*(M_q*Z_alpha + M_alpha_dot*g0*sin(Theta0) - (M_alpha + M_T_alpha)*
 Du = X_delEle*(M_alpha + M_T_alpha)*g0*sin(Theta0) - Z_delEle*M_alpha*g0*cos(Theta0)...
     + M_delEle*(Z_alpha*g0*cos(Theta0) - X_alpha*g0*sin(Theta0));
 
-Nu = [Au Bu Cu Du];
+Nu_delEle = [Au Bu Cu Du];
 
 %----------------- ALPHA RESPONSE TO DElve ---------------------
 %% N_alpha
@@ -48,7 +48,7 @@ C_alpha = X_delEle*((U1 + Z_q)*(M_u + M_T_u) - M_q*Z_u) + Z_delEle*M_q*(X_u + X_
 D_alpha = -X_delEle*(M_u + M_T_u)*g0*sin(Theta0) + Z_delEle*(M_u + M_T_u)*g0*cos(Theta0) ...
           + M_delEle*((X_u + X_T_u)*g0*sin(Theta0) - Z_u*g0*cos(Theta0));
 
-N_alpha = [A_alpha B_alpha C_alpha D_alpha];
+N_alpha_delEle = [A_alpha B_alpha C_alpha D_alpha];
 
 %----------------- THETA RESPONSE TO DElev ---------------------
 %% N_theta
@@ -62,7 +62,57 @@ C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
           + Z_delEle*(-(M_alpha + M_T_alpha)*(X_u + X_T_u) + X_alpha*(M_u + M_T_u)) ...
           + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
 
-N_theta = [A_theta B_theta C_theta];
+N_theta_delEle = [A_theta B_theta C_theta];
+
+
+%% %% ---------------------------------------------------------
+%----------------- U RESPONSE TO delT ---------------------
+
+%% Nu_delT
+delT = EngineThrustCMD;
+X_delEle = delT/Mass;
+Z_delEle = 0;
+M_delEle = 0;
+Au = X_delEle*(U1 -Z_alpha_dot);
+
+Bu = -X_delEle*((U1 - Z_alpha_dot)*M_q + Z_alpha + M_alpha_dot*(U1 + Z_q)) + Z_delEle*X_alpha;
+
+Cu = X_delEle*(M_q*Z_alpha + M_alpha_dot*g0*sin(Theta0) - (M_alpha + M_T_alpha)*(U1 ...
+    + Z_q)) + Z_delEle*(-M_alpha_dot*g0*cos(Theta0) - X_alpha*M_q) ...
+    + M_delEle*(X_alpha*(U1 + Z_q) - (U1 - Z_alpha_dot)*g0*cos(Theta0));
+
+Du = X_delEle*(M_alpha + M_T_alpha)*g0*sin(Theta0) - Z_delEle*M_alpha*g0*cos(Theta0)...
+    + M_delEle*(Z_alpha*g0*cos(Theta0) - X_alpha*g0*sin(Theta0));
+
+Nu_delT = [Au Bu Cu Du];
+
+%----------------- ALPHA RESPONSE TO delT ---------------------
+%% N_alpha
+A_alpha = Z_delEle;
+
+B_alpha = X_delEle*Z_u + Z_delEle*(-M_q - (X_u + X_T_u)) + M_delEle*(U1 + Z_q);
+
+C_alpha = X_delEle*((U1 + Z_q)*(M_u + M_T_u) - M_q*Z_u) + Z_delEle*M_q*(X_u + X_T_u) ...
+          + M_delEle*(-g0*sin(Theta0) - (U1 + Z_q)*(X_u + X_T_u));
+
+D_alpha = -X_delEle*(M_u + M_T_u)*g0*sin(Theta0) + Z_delEle*(M_u + M_T_u)*g0*cos(Theta0) ...
+          + M_delEle*((X_u + X_T_u)*g0*sin(Theta0) - Z_u*g0*cos(Theta0));
+
+N_alpha_delT = [A_alpha B_alpha C_alpha D_alpha];
+
+%----------------- THETA RESPONSE TO delT ---------------------
+%% N_theta
+A_theta = Z_delEle*M_alpha_dot + M_delEle*(U1 - Z_alpha_dot);
+
+B_theta = X_delEle*(Z_u*M_alpha_dot + (U1 - Z_alpha_dot)*(M_u + M_T_u)) ...
+          + Z_delEle*((M_alpha + M_T_alpha) - M_alpha_dot*(X_u + X_T_u)) ...
+          + M_delEle*(-Z_alpha - (U1 - Z_alpha_dot)*(X_u + X_T_u));
+
+C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
+          + Z_delEle*(-(M_alpha + M_T_alpha)*(X_u + X_T_u) + X_alpha*(M_u + M_T_u)) ...
+          + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
+
+N_theta_delT = [A_theta B_theta C_theta];
 
 
 %% ---------------------------------------------------------
@@ -215,10 +265,15 @@ N_psi_Rud = [A_psi_Rud B_psi_Rud C_psi_Rud D_psi_Rud];
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TRANSFER FUNCTIONS
+% Elevator TF
+TF_u_de = tf(Nu_delEle,D1_bar);
+TF_alpha_de = tf(N_alpha_delEle,D1_bar);
+TF_Theta_de = tf(N_theta_delEle,D1_bar);
+
 % Elavtor TF
-TF_u_de = tf(Nu,D1_bar);
-TF_alpha_de = tf(N_alpha,D1_bar);
-TF_Theta_de = tf(N_theta,D1_bar);
+TF_u_delT = tf(Nu_delT,D1_bar);
+TF_alpha_delT = tf(N_alpha_delT,D1_bar);
+TF_Theta_delT = tf(N_theta_delT,D1_bar);
 
 % Aileron TF
 TF_beta_d_ail = tf(Num_beta_ail,D2_bar_ail);
