@@ -35,23 +35,23 @@ Initial_conditions
 % B3_NonDimFC3
 
 % Now calculate all the dimensional derivatives for that FC
-% Calc_DimDerivs
+ Calc_DimDerivs
 
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
-%Estimate_Modes
+Estimate_Modes
 
 % Calculate Long-Vert & Lat-Dir Stability Matrices
-% Calc_StabMatrix
+ Calc_StabMatrix
 
 % Compute Long-Vert & Lat-Dir Transfer Functions
-% Calc_XferFunc
+ Calc_XferFunc
 
 
 % --- Simulation Inputs ---
 ActTC    = 0.3;      % Actuator Time Constant
 
 % Now do final Sim Init and Trim
-Sim_Trim
+% Sim_Trim
 
 
 % Simulation is now fully initiated and ready to run.
