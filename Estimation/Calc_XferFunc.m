@@ -270,7 +270,7 @@ TF_u_de = tf(Nu_delEle,D1_bar);
 TF_alpha_de = tf(N_alpha_delEle,D1_bar);
 TF_Theta_de = tf(N_theta_delEle,D1_bar);
 
-% Elavtor TF
+% Thrust TF
 TF_u_delT = tf(Nu_delT,D1_bar);
 TF_alpha_delT = tf(N_alpha_delT,D1_bar);
 TF_Theta_delT = tf(N_theta_delT,D1_bar);
