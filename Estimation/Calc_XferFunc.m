@@ -62,7 +62,61 @@ C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
           + Z_delEle*(-(M_alpha + M_T_alpha)*(X_u + X_T_u) + X_alpha*(M_u + M_T_u)) ...
           + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
 
+<<<<<<< Updated upstream
 N_theta = [A_theta B_theta C_theta];
+=======
+N_theta_delEle = [A_theta B_theta C_theta];
+
+
+%% %% ---------------------------------------------------------
+%----------------- U RESPONSE TO delT ---------------------
+
+%% Nu_delT
+delT = EngineThrustCMD;
+X_delEle = 1;
+Z_delEle = 0;
+M_delEle = 0;
+Au = X_delEle*(U1 -Z_alpha_dot);
+
+Bu = -X_delEle*((U1 - Z_alpha_dot)*M_q + Z_alpha + M_alpha_dot*(U1 + Z_q)) + Z_delEle*X_alpha;
+
+Cu = X_delEle*(M_q*Z_alpha + M_alpha_dot*g0*sin(Theta0) - (M_alpha + M_T_alpha)*(U1 ...
+    + Z_q)) + Z_delEle*(-M_alpha_dot*g0*cos(Theta0) - X_alpha*M_q) ...
+    + M_delEle*(X_alpha*(U1 + Z_q) - (U1 - Z_alpha_dot)*g0*cos(Theta0));
+
+Du = X_delEle*(M_alpha + M_T_alpha)*g0*sin(Theta0) - Z_delEle*M_alpha*g0*cos(Theta0)...
+    + M_delEle*(Z_alpha*g0*cos(Theta0) - X_alpha*g0*sin(Theta0));
+
+Nu_delT = [Au Bu Cu Du];
+
+%----------------- ALPHA RESPONSE TO delT ---------------------
+%% N_alpha
+A_alpha = Z_delEle;
+
+B_alpha = X_delEle*Z_u + Z_delEle*(-M_q - (X_u + X_T_u)) + M_delEle*(U1 + Z_q);
+
+C_alpha = X_delEle*((U1 + Z_q)*(M_u + M_T_u) - M_q*Z_u) + Z_delEle*M_q*(X_u + X_T_u) ...
+          + M_delEle*(-g0*sin(Theta0) - (U1 + Z_q)*(X_u + X_T_u));
+
+D_alpha = -X_delEle*(M_u + M_T_u)*g0*sin(Theta0) + Z_delEle*(M_u + M_T_u)*g0*cos(Theta0) ...
+          + M_delEle*((X_u + X_T_u)*g0*sin(Theta0) - Z_u*g0*cos(Theta0));
+
+N_alpha_delT = [A_alpha B_alpha C_alpha D_alpha];
+
+%----------------- THETA RESPONSE TO delT ---------------------
+%% N_theta
+A_theta = Z_delEle*M_alpha_dot + M_delEle*(U1 - Z_alpha_dot);
+
+B_theta = X_delEle*(Z_u*M_alpha_dot + (U1 - Z_alpha_dot)*(M_u + M_T_u)) ...
+          + Z_delEle*((M_alpha + M_T_alpha) - M_alpha_dot*(X_u + X_T_u)) ...
+          + M_delEle*(-Z_alpha - (U1 - Z_alpha_dot)*(X_u + X_T_u));
+
+C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
+          + Z_delEle*(-(M_alpha + M_T_alpha)*(X_u + X_T_u) + X_alpha*(M_u + M_T_u)) ...
+          + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
+
+N_theta_delT = [A_theta B_theta C_theta];
+>>>>>>> Stashed changes
 
 
 %% ---------------------------------------------------------
@@ -230,6 +284,34 @@ TF_beta_d_Rud = tf(Num_beta_Rud,D2_bar_Rud);
 TF_phi_d_Rud = tf(N_phi_Rud,D2_bar_Rud);
 TF_psi_d_Rud = tf(N_psi_Rud,D2_bar_Rud);
 
+%% Pitch Controller Values
+Ktheta_LOES = 3.685;
+Kthetdot_LOES = .56;
+
+% Given data for FC3
+u0_kts = 516.00;
+u0     = u0_kts * 1.68781;   % ft/s
+
+Za     = -339.0036;          % ft/s^2
+Zde    = -18.3410;           % ft/s^2
+
+Ma     = -1.6165;            % 1/s^2
+Madot  = -0.1425;            % 1/s
+Mq     = -0.4038;            % 1/s
+Mde    = -1.2124;            % 1/s^2
+
+% Short-period coefficients
+A  = 1;
+B  = -(Mq + Madot + Za/u0);
+C  = Za*Mq/u0 - Ma;
+
+Aq = Mde + Madot*(Zde/u0);
+Bq = Ma*(Zde/u0) - Mde*(Za/u0);
+
+% Transfer function
+num = [Aq Bq];
+den = [A B C];
+TF_pitchrate_de = tf(num,den);
 
 %% -------------------------------------------------
 % Root locus analysis 
