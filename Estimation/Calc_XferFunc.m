@@ -62,9 +62,8 @@ C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
           + Z_delEle*(-(M_alpha + M_T_alpha)*(X_u + X_T_u) + X_alpha*(M_u + M_T_u)) ...
           + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
 
-<<<<<<< Updated upstream
+% Updated upstream
 N_theta = [A_theta B_theta C_theta];
-=======
 N_theta_delEle = [A_theta B_theta C_theta];
 
 
@@ -116,7 +115,7 @@ C_theta = X_delEle*((M_alpha + M_T_alpha)*Z_u - Z_alpha*(M_u + M_T_u)) ...
           + M_delEle*(Z_alpha*(X_u + X_T_u) - X_alpha*Z_u);
 
 N_theta_delT = [A_theta B_theta C_theta];
->>>>>>> Stashed changes
+
 
 
 %% ---------------------------------------------------------
