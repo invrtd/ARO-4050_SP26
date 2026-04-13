@@ -66,3 +66,6 @@ Kp_pitch = 0.0;
 Kd_pitch = 0.0;
 Kp_roll  = 0.0;
 Kd_roll  = 0.0;
+
+% --- LOES Gains ---
+Kp_pitch_LOES = 0.5;
