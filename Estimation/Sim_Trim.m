@@ -7,7 +7,11 @@ didbreak = false;
 history = zeros(max_iters, 6);   % [iter, Ax, Az, alpha, StabTrimPos, EngineThrustCMD]
 
 set_param(modelname, 'FastRestart', 'on');
-
+%intial guesses
+T_FLF           = Weight/(CL1/CD1);         % lbf
+EngineThrustCMD = T_FLF / (NumberOfEngines * T_Max0);   % fixed
+ih = -(CM0 + CM_alpha*deg2rad(alpha))/(CM_ih); %rad
+StabTrimPos = rad2deg(ih)
 for i = 1:max_iters
 
     Initial_conditions
