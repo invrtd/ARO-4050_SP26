@@ -23,10 +23,12 @@ max_iters=60;
 % StabTrimPos = -1.516;      % Horizontal Stabilizer Setting (+ = Nose Up Trim, deg or rad depending on model)
 % EngineThrustCMD = 0.793;   % N1 Fan Speed (1.0 = 100% Max, 0.0 = 0% Min
 
-alpha            = 2.482647;
-StabTrimPos      = -1.549884;
-EngineThrustCMD  = 0.814704;
-
+% alpha            = 2.482647; old values unsure why changed even without
+% StabTrimPos      = -1.549884; purturbed being enabled
+% EngineThrustCMD  = 0.814704;
+alpha            = 2.546905; %new values 
+StabTrimPos      = -1.590071;
+EngineThrustCMD  = 0.825398;
 % Set Initial Conditions
 Initial_conditions
 
@@ -66,3 +68,4 @@ Kp_pitch = 0.0;
 Kd_pitch = 0.0;
 Kp_roll  = 0.0;
 Kd_roll  = 0.0;
+
