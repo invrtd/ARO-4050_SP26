@@ -24,3 +24,4 @@ z_T_out = 0.50;    % Outboard (Engines 1 and 4)
 % --- Thrust Alignment Angles ---
 psi_T = 0.0;       % Thrust line yaw angle relative to x-axis (rad) - Assume zero for now
 phi_T = 0.0;       % Thrust line pitch angle relative to x-axis (rad) - Assume zero for now
+R_n = 7.783; %ft
