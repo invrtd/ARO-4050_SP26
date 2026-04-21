@@ -380,3 +380,12 @@ TF_pitchrate_de = tf(num,den);
 % - Same for roll g0ains
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Num_betaDot_Rud = [A_beta_Rud B_beta_Rud C_beta_Rud D_beta_Rud 0 0]; 
+Num_betaDot_ail = [A_beta_ail B_beta_ail C_beta_ail D_beta_ail 0 0];
+N_psiDot_Rud = [A_psi_Rud B_psi_Rud C_psi_Rud D_psi_Rud 0];
+N_psiDot_ail = [A_psi_ail B_psi_ail C_psi_ail D_psi_ail 0];
+
+syms s
+G = @(s) Num_betaDot_Rud/D2_bar_Rud;
+dcgain(TF_psi_d_Rud)
