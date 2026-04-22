@@ -26,9 +26,9 @@ max_iters=60;
 % alpha            = 2.482647; old values unsure why changed even without
 % StabTrimPos      = -1.549884; purturbed being enabled
 % EngineThrustCMD  = 0.814704;
-alpha            = 2.546905; %new values 
-StabTrimPos      = -1.590071;
-EngineThrustCMD  = 0.825398;
+alpha            = 2.546935;
+StabTrimPos      = -1.590305;
+EngineThrustCMD  = 0.825406;
 % Set Initial Conditions
 Initial_conditions
 
@@ -68,6 +68,7 @@ Kp_pitch = 0.0;
 Kd_pitch = 0.0;
 Kp_roll  = 0.0;
 Kd_roll  = 0.0;
-
+Ktheta = 7;
+Kthetadot = 2.9;
 % --- LOES Gains ---
 Kp_pitch_LOES = 0.5;
