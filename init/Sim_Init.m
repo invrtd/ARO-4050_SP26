@@ -38,6 +38,8 @@ Initial_conditions
 
 % Now calculate all the dimensional derivatives for that FC
  Calc_DimDerivs
+% Compute Long-Vert & Lat-Dir Transfer Functions
+ Calc_XferFunc
 
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
 Estimate_Modes
@@ -45,8 +47,7 @@ Estimate_Modes
 % Calculate Long-Vert & Lat-Dir Stability Matrices
  Calc_StabMatrix
 
-% Compute Long-Vert & Lat-Dir Transfer Functions
- Calc_XferFunc
+
 
 
 % --- Simulation Inputs ---
