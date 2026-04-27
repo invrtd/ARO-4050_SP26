@@ -53,7 +53,7 @@ Estimate_Modes
 ActTC    = 0.3;      % Actuator Time Constant
 
 % Now do final Sim Init and Trim
-% Sim_Trim
+
 
 
 % Simulation is now fully initiated and ready to run.
@@ -72,3 +72,5 @@ Ktheta = 7;
 Kthetadot = 2.9;
 % --- LOES Gains ---
 Kp_pitch_LOES = 0.5;
+% Sim_Trim
+
