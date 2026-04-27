@@ -26,9 +26,9 @@ max_iters=60;
 % alpha            = 2.482647; old values unsure why changed even without
 % StabTrimPos      = -1.549884; purturbed being enabled
 % EngineThrustCMD  = 0.814704;
-alpha            = 2.546905; %new values 
-StabTrimPos      = -1.590071;
-EngineThrustCMD  = 0.825398;
+alpha            = 2.546935;
+StabTrimPos      = -1.590305;
+EngineThrustCMD  = 0.825406;
 % Set Initial Conditions
 Initial_conditions
 
@@ -54,7 +54,7 @@ Estimate_Modes
 ActTC    = 0.3;      % Actuator Time Constant
 
 % Now do final Sim Init and Trim
-% Sim_Trim
+
 
 
 % Simulation is now fully initiated and ready to run.
@@ -69,6 +69,9 @@ Kp_pitch = 0.0;
 Kd_pitch = 0.0;
 Kp_roll  = 0.0;
 Kd_roll  = 0.0;
-
+Ktheta = 7;
+Kthetadot = 8;
 % --- LOES Gains ---
 Kp_pitch_LOES = 0.5;
+% Sim_Trim
+
