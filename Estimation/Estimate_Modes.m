@@ -39,3 +39,11 @@ CL_row = [ ...
 CM_row = [ ...
      (CM_u + 2*CM1),   CM_alpha,   CM_alphdot,   CM_q,   CM_delEle ...
 ]
+
+
+% Alt Hold Gains (Outer Loop)
+selalt = 40000-50; % ft 40000+/-50
+Kp_alt = 0.00026; 
+Kd_alt = 0.01;
+Ki_alt = 0.000006;
+PitchIntegLim = 0.0873; % rad
