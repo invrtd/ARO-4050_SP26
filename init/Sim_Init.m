@@ -69,8 +69,8 @@ Kp_pitch = 0.0;
 Kd_pitch = 0.0;
 Kp_roll  = 0.0;
 Kd_roll  = 0.0;
-Ktheta = 7;
-Kthetadot = 8;
+Ktheta = 6;
+Kthetadot = 10;
 % --- LOES Gains ---
 Kp_pitch_LOES = 0.5;
 % Sim_Trim
