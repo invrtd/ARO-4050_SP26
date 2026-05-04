@@ -17,6 +17,7 @@ B747NonDimFC3    % High Speed Cruise Flight Condition
 
 
 
+
 % --- Initial Trim Settings ---
 tolerance =1e-5;
 max_iters=60;
@@ -26,26 +27,25 @@ max_iters=60;
 % alpha            = 2.482647; old values unsure why changed even without
 % StabTrimPos      = -1.549884; purturbed being enabled
 % EngineThrustCMD  = 0.814704;
-alpha            = 2.546935;
-StabTrimPos      = -1.590305;
-EngineThrustCMD  = 0.825406;
+alpha            = 2.558155;
+StabTrimPos      = -1.597267;
+EngineThrustCMD  = 0.826450;
 % Set Initial Conditions
 Initial_conditions
-
 % B5_NonDimFC1
 % B5_NonDimFC3
 % B3_NonDimFC3
 
 % Now calculate all the dimensional derivatives for that FC
- Calc_DimDerivs
+  Calc_DimDerivs
 % Compute Long-Vert & Lat-Dir Transfer Functions
- Calc_XferFunc
+   Calc_XferFunc
 
 % Estimate 1st and 2nd Order Dynamic Mode Parameters
-Estimate_Modes
+ Estimate_Modes
 
 % Calculate Long-Vert & Lat-Dir Stability Matrices
- Calc_StabMatrix
+   Calc_StabMatrix
 
 
 

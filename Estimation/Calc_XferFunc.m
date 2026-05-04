@@ -286,34 +286,34 @@ TF_beta_d_Rud = tf(Num_beta_Rud,D2_bar_Rud);
 TF_phi_d_Rud = tf(N_phi_Rud,D2_bar_Rud);
 TF_psi_d_Rud = tf(N_psi_Rud,D2_bar_Rud);
 
-%% Pitch Controller Values
-Ktheta_LOES = 3.685;
-Kthetdot_LOES = .56;
-
-% Given data for FC3
-u0_kts = 516.00;
-u0     = u0_kts * 1.68781;   % ft/s
-
-Za     = -339.0036;          % ft/s^2
-Zde    = -18.3410;           % ft/s^2
-
-Ma     = -1.6165;            % 1/s^2
-Madot  = -0.1425;            % 1/s
-Mq     = -0.4038;            % 1/s
-Mde    = -1.2124;            % 1/s^2
-
-% Short-period coefficients
-A  = 1;
-B  = -(Mq + Madot + Za/u0);
-C  = Za*Mq/u0 - Ma;
-
-Aq = Mde + Madot*(Zde/u0);
-Bq = Ma*(Zde/u0) - Mde*(Za/u0);
-
-% Transfer function
-num = [Aq Bq];
-den = [A B C];
-TF_pitchrate_de = tf(num,den);
+% %% Pitch Controller Values
+% Ktheta_LOES = 3.685;
+% Kthetdot_LOES = .56;
+% 
+% % Given data for FC3
+% u0_kts = 516.00;
+% u0     = u0_kts * 1.68781;   % ft/s
+% 
+% Za     = -339.0036;          % ft/s^2
+% Zde    = -18.3410;           % ft/s^2
+% 
+% Ma     = -1.6165;            % 1/s^2
+% Madot  = -0.1425;            % 1/s
+% Mq     = -0.4038;            % 1/s
+% Mde    = -1.2124;            % 1/s^2
+% 
+% % Short-period coefficients
+% A  = 1;
+% B  = -(Mq + Madot + Za/u0);
+% C  = Za*Mq/u0 - Ma;
+% 
+% Aq = Mde + Madot*(Zde/u0);
+% Bq = Ma*(Zde/u0) - Mde*(Za/u0);
+% 
+% % Transfer function
+% num = [Aq Bq];
+% den = [A B C];
+% TF_pitchrate_de = tf(num,den);
 
 %% -------------------------------------------------
 % Root locus analysis 

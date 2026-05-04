@@ -3,9 +3,9 @@
 % simulation based on the selected flight condition parameters.
 
 % --- Translational Velocities ---
-u0 = U1;                    % Body-axis x-velocity (Ft/Sec)
+u0 = U1 * cosd(alpha);                    % Body-axis x-velocity (Ft/Sec)
 v0 = 0.0;                   % Body-axis y-velocity (Ft/Sec) - Assume zero initial sideslip
-w0 = u0 * tand(alpha);      % Body-axis z-velocity (Ft/Sec) - Based on initial trim angle of attack
+w0 = U1 * sind(alpha);      % Body-axis z-velocity (Ft/Sec) - Based on initial trim angle of attack
 
 % --- Angular Rates ---
 p0 = 0.0;                   % Roll rate (Rad/Sec)

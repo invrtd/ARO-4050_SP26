@@ -28,7 +28,7 @@ for i = 1:max_iters
     history(i,:) = [i, Ax_val, Az_val, alpha, StabTrimPos, EngineThrustCMD];
 
     % Check convergence
-    if max(abs([Ax_val, Az_val])) < tolerance
+    if max(abs([Ax_val, Az_val, EngineThrustCMD])) < tolerance
         didbreak = true;
         set_param(modelname, 'FastRestart', 'off');
         break;
